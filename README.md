@@ -1,34 +1,63 @@
-Mini Language + Static CheckerThis is a small project where I built a tiny programming language from scratch. The language supports variable declarations, assignments, basic arithmetic, and print statements.The project includes:
-A Lexer that breaks the code into tokens
-A Parser that builds an Abstract Syntax Tree (AST)
-A Static Checker that finds common errors before running the program
-An optional Interpreter that can execute the code
-I made this project to understand the basic working of compilers and the idea of static analysis (which is related to formal methods).Language FeaturesYou can write simple programs like this:
+# Mini Language + Static Checker
 
-var x;
-var y;
-x = 10;
-y = x + 5 * 2;
-print y;Supported operators: +, -, *, /
+A simple educational project that implements a tiny programming language with:
 
-Parentheses are also supported.
-What the Static Checker Can Detect
-Using a variable before declaring it
-Declaring the same variable more than once
-Division by zero (when dividing by a constant 0)
+- Lexer (Tokenizer)
+- Parser (Recursive Descent)
+- Abstract Syntax Tree (AST)
+- Static Checker (simple verifier)
+- Optional Interpreter
 
+This project demonstrates core ideas from **Programming Languages**, **Compilers**, and **Formal Methods**.
 
-# Check and run the program
+---
+
+## Language Features
+
+Supported statements:
+
+```text
+var x;              // variable declaration
+x = 10;             // assignment
+y = x + 5 * 2;      // arithmetic expression
+print y;            // print statement
+```
+
+Supported operators: `+`, `-`, `*`, `/`  
+Parentheses are allowed for grouping.
+
+---
+
+## What the Static Checker Detects
+
+1. **Variable used before declaration**
+2. **Variable declared more than once**
+3. **Division by zero** (when the divisor is a constant 0)
+
+---
+
+## How to Run
+
+```bash
+# Only perform static checking
 python main.py examples/correct1.mini
-python main.py examples/correct1.mini --run
 
-# Structure of the project
-├── main.py
-├── lexer.py
-├── parser.py
-├── ast_nodes.py
-├── checker.py
-├── interpreter.py
+# Check + Execute the program
+python main.py examples/correct1.mini --run
+```
+
+---
+
+## Project Structure
+
+```text
+mini_lang_project/
+├── main.py              # Entry point
+├── lexer.py             # Tokenizer
+├── parser.py            # Recursive Descent Parser
+├── ast_nodes.py         # AST node definitions
+├── checker.py           # Static Checker / Simple Verifier
+├── interpreter.py       # Optional interpreter
 ├── examples/
 │   ├── correct1.mini
 │   ├── correct2.mini
@@ -36,3 +65,34 @@ python main.py examples/correct1.mini --run
 │   ├── error_redeclare.mini
 │   └── error_divzero.mini
 └── README.md
+```
+
+---
+
+## Example Output
+
+**Correct program:**
+```text
+[Lexer] Tokens generated successfully.
+[Parser] AST created successfully.
+[Static Checker] No errors found. Program is valid.
+```
+
+**Error program (undeclared variable):**
+```text
+[Static Checker] Found errors:
+  Error at line 3: Variable 'y' used before declaration
+```
+
+---
+
+## Concepts Covered
+
+| Component       | Related Area                  |
+|----------------|-------------------------------|
+| Lexer          | Compilers / Programming Languages |
+| Parser + AST   | Compilers / Programming Languages |
+| Static Checker | Formal Methods / Program Analysis |
+| Interpreter    | Programming Languages         |
+
+---

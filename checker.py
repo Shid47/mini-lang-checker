@@ -43,7 +43,7 @@ class StaticChecker:
             self.visit(node.left)
             self.visit(node.right)
 
-            # Simple constant division-by-zero check
+            # Simple constant division by zero check
             if node.op == '/' and isinstance(node.right, Number) and node.right.value == 0:
                 self.error("Division by zero", node.line)
 
